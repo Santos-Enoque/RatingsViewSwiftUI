@@ -1,3 +1,3 @@
 # RatingsSwift
 
-A description of this package.
+A Custom ratings package for swiftui
