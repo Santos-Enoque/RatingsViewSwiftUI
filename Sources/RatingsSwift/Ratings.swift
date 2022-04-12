@@ -4,12 +4,13 @@ import SwiftUI
 public struct RatingsView: View {
     var maxRating: Int
     @Binding var currentRating: Int
-    var width:Int = 30
-    var openSFSymbol:String = "star"
-    var fillSFSymbol:String = "star.fill"
-    public init(maxRating: Int, currentRating: Binding<Int>, width: Int = 30,openSFSymbol:String = "star",fillSFSymbol:String = "star.fill" ){
-        self.maxRating = maxRating
+    var color: UIColor
+    var width:Int
+    var openSFSymbol:String
+    var fillSFSymbol:String
+    public init(maxRating: Int,color: UIColor = UIColor.systemYellow, currentRating: Binding<Int>, width: Int = 30,openSFSymbol:String = "star",fillSFSymbol:String = "star.fill" ){ self.maxRating = maxRating
         self._currentRating = currentRating
+        self.color = color
         self.width = width
         self.openSFSymbol = openSFSymbol
         self.fillSFSymbol = fillSFSymbol
@@ -21,7 +22,7 @@ public struct RatingsView: View {
                 Image(systemName: rating < self.currentRating ? self.fillSFSymbol : self.openSFSymbol)
                     .resizable()
                     .scaledToFit()
-                    .foregroundColor(Color(UIColor.systemYellow))
+                    .foregroundColor(Color(color))
                     .onTapGesture {
                         self.currentRating = rating+1
                 }
